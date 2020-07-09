@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <ticker id='ticker'></ticker>
+        <input id='guess'></input>
+        <button onclick="checkAnswer()">Submit</button>
+        <correct id='correct'></correct>
+    </body>
+</html>
+
+<script>
+var stock;
+$.getJSON('https://raw.githubusercontent.com/james8bc/stocktickergame/master/sp500.json', function(data) {
+    stock = data[Math.floor(Math.random() * 504)] 
+    console.log(stock)
+    document.getElementById('ticker').innerHTML = stock.Symbol  
+});
+
+function checkAnswer() {
+    console.log(stock)
+    if(document.getElementById('guess').value == stock.Name) {
+        document.getElementById('correct').innerHTML = 'gg your right'  
+    }
+    else {
+        document.getElementById('correct').innerHTML = "you're wrong retard"
+    }   
+}
+</script>
